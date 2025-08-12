@@ -1,5 +1,6 @@
 import streamlit as st
 import pandas as pd
+import base64
 import plotly.express as px
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
@@ -9,7 +10,7 @@ import re
 
 # Konfigurasi halaman
 st.set_page_config(
-    page_title="Hospital Review Analytics",
+    page_title="CSERA",
     page_icon="🏥",
     layout="wide",
     initial_sidebar_state="expanded"
@@ -191,11 +192,20 @@ if 'current_page' not in st.session_state:
     st.session_state.current_page = "Home"
 
 # Sidebar untuk navigasi
-st.sidebar.markdown("""
-<div style="text-align: center; padding: 1rem; background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%); border-radius: 10px; margin-bottom: 1rem;">
-    <h2 style="color: white; margin: 0;">🏥 Analisis Rumah Sakit</h2>
-</div>
-""", unsafe_allow_html=True)
+# st.sidebar.markdown("""
+# <div style="text-align: center; padding: 1rem; background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%); border-radius: 10px; margin-bottom: 1rem;">
+#     <h2 style="color: white; margin: 0;">🏥 Analisis Rumah Sakit</h2>
+# </div>
+# """, unsafe_allow_html=True)
+st.sidebar.markdown(
+    f"""
+    <div style="text-align: center; padding: 1rem; margin-bottom: 1rem;">
+        <img src="data:image/png;base64,{base64.b64encode(open('logo csera.png', 'rb').read()).decode()}" style="max-width: 100%;">
+    </div>
+    """,
+    unsafe_allow_html=True
+)
+
 
 st.sidebar.markdown('<div class="custom-subheader">📋 Menu Navigasi</div>', unsafe_allow_html=True)
 
